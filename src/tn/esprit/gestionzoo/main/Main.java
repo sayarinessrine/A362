@@ -1,3 +1,8 @@
+package tn.esprit.gestionzoo.main;
+
+import tn.esprit.gestionzoo.entities.Animal;
+import tn.esprit.gestionzoo.entities.Zoo;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -50,7 +55,7 @@ public class Main {
         zoo2.addAnimal(new Animal("Girafe", "Giraffidae", 6, false));
 
         Zoo plusGrand = Zoo.comparerZoo(zoo1, zoo2);
-        System.out.println("Le zoo avec le plus d'animaux a : " + plusGrand.nbrAnimals + " animaux.");
+        System.out.println("Le zoo avec le plus d'animaux a : " + plusGrand + " animaux.");
 
 
 
