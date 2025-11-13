@@ -2,28 +2,28 @@ package tn.esprit.gestionzoo.entities;
 
 public class Main {
     public static void main(String[] args) {
-        try {
+        SocieteArrayList societe = new SocieteArrayList();
 
-            Dolphin dolphin = new Dolphin("Flipper", 8, "Océan", 25.5f);
-            Penguin penguin = new Penguin("Pingu", 4, "Antarctique", 50f);
+        Employe e1 = new Employe(1, "sayari", "nessrine", "IT", 2);
+        Employe e2 = new Employe(2, "Trabelsi", "nour", "RH", 3);
+        Employe e3 = new Employe(3, "Gharbi", "Rania", "Finance", 1);
 
-            Terrestrial lion = new Terrestrial("Simba", "Afrique", 5, true, 4);
+        societe.ajouterEmploye(e1);
+        societe.ajouterEmploye(e2);
+        societe.ajouterEmploye(e3);
 
-            System.out.println("\n🟦 Test de la nage des animaux aquatiques :");
-            dolphin.swim();
-            penguin.swim();
+        System.out.println("Liste initiale :");
+        societe.displayEmploye();
 
-            System.out.println("\n🟥 Test des comportements alimentaires :");
+        System.out.println("\n Recherche par nom (sayari) : " + societe.rechercherEmploye("sayari"));
+        System.out.println(" Recherche par objet (e1) : " + societe.rechercherEmploye(e1));
 
-            dolphin.eatMeat(Food.MEAT);
-            penguin.eatMeat(Food.PLANT);
+        societe.trierEmployeParId();
+        System.out.println("\n Tri par ID :");
+        societe.displayEmploye();
 
-            lion.eatMeat(Food.MEAT);
-            lion.eatPlant(Food.PLANT);
-            lion.eatPlantAndMeet(Food.BOTH);
-
-        } catch (InvalidAgeException e) {
-            System.out.println("⚠️ Erreur d’âge : " + e.getMessage());
-        }
+        societe.trierEmployeParNomDépartementEtGrade();
+        System.out.println("\n Tri par Département et Grade :");
+        societe.displayEmploye();
     }
 }
