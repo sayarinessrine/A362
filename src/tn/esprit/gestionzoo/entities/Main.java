@@ -2,28 +2,19 @@ package tn.esprit.gestionzoo.entities;
 
 public class Main {
     public static void main(String[] args) {
-        SocieteArrayList societe = new SocieteArrayList();
 
-        Employe e1 = new Employe(1, "sayari", "nessrine", "IT", 2);
-        Employe e2 = new Employe(2, "Trabelsi", "nour", "RH", 3);
-        Employe e3 = new Employe(3, "Gharbi", "Rania", "Finance", 1);
+            Aquatic a1 = new Aquatic();
+            Dolphin d1 = new Dolphin();
+            Penguin p1 = new Penguin();
 
-        societe.ajouterEmploye(e1);
-        societe.ajouterEmploye(e2);
-        societe.ajouterEmploye(e3);
+            Aquatic a2 = new Aquatic("Fish", 2, false, "Sea");
+            Dolphin d2 = new Dolphin("Flipper", 5, true, "Ocean", 25.5f);
+            Penguin p2 = new Penguin("Pingo", 3, false, "Arctic", 50.0f);
+            System.out.println(a2);
+            System.out.println(d2);
+            System.out.println(p2);
 
-        System.out.println("Liste initiale :");
-        societe.displayEmploye();
-
-        System.out.println("\n Recherche par nom (sayari) : " + societe.rechercherEmploye("sayari"));
-        System.out.println(" Recherche par objet (e1) : " + societe.rechercherEmploye(e1));
-
-        societe.trierEmployeParId();
-        System.out.println("\n Tri par ID :");
-        societe.displayEmploye();
-
-        societe.trierEmployeParNomDépartementEtGrade();
-        System.out.println("\n Tri par Département et Grade :");
-        societe.displayEmploye();
-    }
-}
+            a2.swim();
+            d2.swim();
+            p2.swim();
+        }}

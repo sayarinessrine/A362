@@ -1,34 +1,20 @@
 package tn.esprit.gestionzoo.entities;
 
 public class Animal {
-    private String name;
-    private String origin;
-    private int age;
-    private boolean isMammal;
+    protected String name;
+    protected int age;
+    protected boolean isMammal;
 
-    public Animal(String name, String origin, int age, boolean isMammal) throws InvalidAgeException {
-        if (age < 0) {
-            throw new InvalidAgeException("L’âge de l’animal ne peut pas être négatif !");
-        }
+    public Animal() {}
+
+    public Animal(String name, int age, boolean isMammal) {
         this.name = name;
-        this.origin = origin;
         this.age = age;
         this.isMammal = isMammal;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getOrigin() {
-        return origin;
-    }
-
-    public boolean isMammal() {
-        return isMammal;
+    @Override
+    public String toString() {
+        return "Animal{" + "name='" + name + '\'' + ", age=" + age + ", isMammal=" + isMammal + '}';
     }
 }

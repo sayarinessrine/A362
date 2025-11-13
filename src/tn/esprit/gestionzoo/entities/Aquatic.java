@@ -1,37 +1,21 @@
 package tn.esprit.gestionzoo.entities;
 
-import tn.esprit.gestionzoo.entities.Carnivore;
-public abstract class Aquatic implements Carnivore<Food> {
-
-    protected String name;
-    protected int age;
+public class Aquatic extends Animal {
     protected String habitat;
 
-    public Aquatic(String name, int age, String habitat) {
-        this.name = name;
-        this.age = age;
+    public Aquatic() {}
+
+    public Aquatic(String name, int age, boolean isMammal, String habitat) {
+        super(name, age, isMammal);
         this.habitat = habitat;
     }
-    public abstract void swim();
-    @Override
-    public void eatMeat(Food meat) {
-        if (meat == Food.MEAT || meat == Food.BOTH) {
-            System.out.println(name + " mange de la viande dans l’eau");
-        } else {
-            System.out.println(name + " ne mange pas de plantes");
-        }
-    }
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
 
-        Aquatic other = (Aquatic) obj;
-        return age == other.age &&
-                name.equals(other.name) &&
-                habitat.equals(other.habitat);
+    public void swim() {
+        System.out.println("This aquatic animal is swimming.");
     }
-    public String getName() {
-        return name;
+
+    @Override
+    public String toString() {
+        return super.toString() + ", habitat='" + habitat + '\'';
     }
 }
