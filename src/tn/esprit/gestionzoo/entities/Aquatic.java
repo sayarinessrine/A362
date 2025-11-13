@@ -1,6 +1,9 @@
 package tn.esprit.gestionzoo.entities;
 
-public class Aquatic { protected String name;
+import tn.esprit.gestionzoo.entities.Carnivore;
+public abstract class Aquatic implements Carnivore<Food> {
+
+    protected String name;
     protected int age;
     protected String habitat;
 
@@ -9,11 +12,15 @@ public class Aquatic { protected String name;
         this.age = age;
         this.habitat = habitat;
     }
-
-    // Instruction 28 : rendre swim() obligatoire dans les classes filles
     public abstract void swim();
-
-    // Instruction 31 : redéfinir equals()
+    @Override
+    public void eatMeat(Food meat) {
+        if (meat == Food.MEAT || meat == Food.BOTH) {
+            System.out.println(name + " mange de la viande dans l’eau");
+        } else {
+            System.out.println(name + " ne mange pas de plantes");
+        }
+    }
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -23,5 +30,8 @@ public class Aquatic { protected String name;
         return age == other.age &&
                 name.equals(other.name) &&
                 habitat.equals(other.habitat);
+    }
+    public String getName() {
+        return name;
     }
 }
