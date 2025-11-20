@@ -2,19 +2,22 @@ package tn.esprit.gestionzoo.entities;
 
 public class Main {
     public static void main(String[] args) {
+        DepartementHashSet gestion = new DepartementHashSet();
 
-            Aquatic a1 = new Aquatic();
-            Dolphin d1 = new Dolphin();
-            Penguin p1 = new Penguin();
+        Departement d1 = new Departement(1, "Informatique", 50);
+        Departement d2 = new Departement(2, "Finance", 20);
+        Departement d3 = new Departement(3, "RH", 15);
 
-            Aquatic a2 = new Aquatic("Fish", 2, false, "Sea");
-            Dolphin d2 = new Dolphin("Flipper", 5, true, "Ocean", 25.5f);
-            Penguin p2 = new Penguin("Pingo", 3, false, "Arctic", 50.0f);
-            System.out.println(a2);
-            System.out.println(d2);
-            System.out.println(p2);
+        gestion.ajouterDepartement(d1);
+        gestion.ajouterDepartement(d2);
+        gestion.ajouterDepartement(d3);
 
-            a2.swim();
-            d2.swim();
-            p2.swim();
-        }}
+        System.out.println("Départements : ");
+        gestion.displayDepartement();
+
+        System.out.println("Recherche 'Finance' : " + gestion.rechercherDepartement("Finance"));
+
+        System.out.println("\nTrié par ID : ");
+        System.out.println(gestion.trierDepartementById());
+    }
+}
