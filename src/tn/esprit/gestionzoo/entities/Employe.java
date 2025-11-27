@@ -2,7 +2,7 @@ package tn.esprit.gestionzoo.entities;
 
 import java.util.Objects;
 
-public class Employe {
+public class Employe implements Comparable<Employe> {
     private int id;
     private String nom;
     private String prenom;
@@ -19,6 +19,7 @@ public class Employe {
         this.grade = grade;
     }
 
+    // Getters & Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
@@ -34,17 +35,34 @@ public class Employe {
     public int getGrade() { return grade; }
     public void setGrade(int grade) { this.grade = grade; }
 
+    // equals() basé sur id + nom
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (!(obj instanceof Employe)) return false;
-        Employe other = (Employe) obj;
-        return id == other.id && Objects.equals(nom, other.nom);
+
+        Employe e = (Employe) obj;
+        return this.id == e.id && this.nom.equals(e.nom);
+    }
+
+    @Override
+    public int hashCode() {
+        return id + nom.hashCode();
+    }
+
+    @Override
+    public int compareTo(Employe e) {
+        return Integer.compare(this.id, e.id);
     }
 
     @Override
     public String toString() {
-        return "Employe{" + "id=" + id + ", nom='" + nom + '\'' + ", prenom='" + prenom + '\'' +
-                ", departement='" + nomDepartement + '\'' + ", grade=" + grade + '}';
+        return "Employe{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", departement='" + nomDepartement + '\'' +
+                ", grade=" + grade +
+                '}';
     }
 }

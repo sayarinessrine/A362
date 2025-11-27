@@ -2,22 +2,26 @@ package tn.esprit.gestionzoo.entities;
 
 public class Main {
     public static void main(String[] args) {
-        DepartementHashSet gestion = new DepartementHashSet();
+        Employe e1 = new Employe(1, "Ali", "Ahmed", "IT", 3);
+        Employe e2 = new Employe(2, "Salah", "Karim", "RH", 2);
+        Employe e3 = new Employe(3, "Mouna", "Amira", "Finance", 4);
 
-        Departement d1 = new Departement(1, "Informatique", 50);
-        Departement d2 = new Departement(2, "Finance", 20);
-        Departement d3 = new Departement(3, "RH", 15);
+        Departement d1 = new Departement("Informatique");
+        Departement d2 = new Departement("Ressources Humaines");
 
-        gestion.ajouterDepartement(d1);
-        gestion.ajouterDepartement(d2);
-        gestion.ajouterDepartement(d3);
+        AffectationHashMap affect = new AffectationHashMap();
 
-        System.out.println("Départements : ");
-        gestion.displayDepartement();
+        affect.ajouterEmployeDepartement(e1, d1);
+        affect.ajouterEmployeDepartement(e2, d2);
+        affect.ajouterEmployeDepartement(e3, d1);
 
-        System.out.println("Recherche 'Finance' : " + gestion.rechercherDepartement("Finance"));
+        System.out.println("=== Affichage ===");
+        affect.afficherEmployesEtDepartements();
 
-        System.out.println("\nTrié par ID : ");
-        System.out.println(gestion.trierDepartementById());
+        // Test ajouter même employé dans un autre département
+        System.out.println("\n=== Modification département employé 1 ===");
+        affect.ajouterEmployeDepartement(e1, d2);
+
+        affect.afficherEmployesEtDepartements();
     }
 }
